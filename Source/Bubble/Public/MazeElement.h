@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "MazeElement.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable, BlueprintType)
 class BUBBLE_API AMazeElement : public AActor
 {
 	GENERATED_BODY()
@@ -15,11 +15,6 @@ public:
 	// Sets default values for this actor's properties
 	AMazeElement();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:
 	UPROPERTY(BlueprintReadOnly, Category = "Size")
 	bool bLeftWall;
 	UPROPERTY(BlueprintReadOnly, Category = "Size")
@@ -33,15 +28,14 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Size")
 	bool bBackWall;
 
+	UPROPERTY(BlueprintReadOnly, Category = "Coordinates")
 	FIntVector Coord;
 
-	UPROPERTY()
-	bool bVisited;
+	UPROPERTY(BlueprintReadOnly, Category = "Coordinates")
+	bool bIsExit;
 
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	bool bVisited;
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void UpdateWalls();
-
 };

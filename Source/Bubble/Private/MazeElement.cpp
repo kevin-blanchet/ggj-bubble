@@ -16,22 +16,9 @@ AMazeElement::AMazeElement()
 	bFrontWall = true;
 	bBackWall = true;
 
+	bIsExit = false;
+
 	bVisited = false;
 
 	Coord = FIntVector(0, 0, 0);
 }
-
-// Called when the game starts or when spawned
-void AMazeElement::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void AMazeElement::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-

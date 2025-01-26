@@ -33,10 +33,15 @@ public:
 	int32 MazeGridSize;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Seed")
-	int32 WorldSeed;
+	int32 WorldSeed; 
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	TSubclassOf<AMazeElement> MazeElementClass;
 
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	bool bDoesExitExist;
+
+	UFUNCTION(BlueprintCallable, Category = "Maze")
+	void GenerateMaze();
 
 	// Create the maze
 	void CreateMaze(AMazeElement* previousCell, AMazeElement* currentCell);
